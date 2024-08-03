@@ -11,6 +11,7 @@ export const Add = () => {
     setQuery(e.target.value);
 
     fetch(
+      // `http://www.omdbapi.com/?s=${e.target.value}&apikey=1f374582`
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
     )
       .then((res) => res.json())
@@ -36,7 +37,7 @@ export const Add = () => {
             />
           </div>
 
-          {results.length > 0 && (
+          {results.length > 1 && (
             <ul className="results">
               {results.map((movie) => (
                 <li key={movie.id}>
